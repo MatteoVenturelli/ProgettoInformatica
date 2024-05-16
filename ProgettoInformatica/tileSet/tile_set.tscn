@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://m2k88w0dadl3"]
+
+[ext_resource type="Texture2D" uid="uid://bnu44xuspbjxu" path="res://tileSet/provatilemap.png" id="1_mul2h"]
+
+[node name="TileSet" type="Node2D"]
+
+[node name="Grass" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(603, 279)
+texture = ExtResource("1_mul2h")
+region_enabled = true
+region_rect = Rect2(120, 18, 16, 16)
+
+[node name="Sand" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(621, 279)
+texture = ExtResource("1_mul2h")
+region_enabled = true
+region_rect = Rect2(1, 1, 16, 16)
