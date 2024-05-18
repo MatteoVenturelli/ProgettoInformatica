@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7wfi0ggktfyt"]
+
+[ext_resource type="Texture2D" uid="uid://ddfi0ficymkoo" path="res://Entità/Player/icon.svg" id="1_bbcin"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sya02"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_bbcin")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l3pft"]
+size = Vector2(128, 127)
+
+[node name="Enemies" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_sya02")
+animation = &"Idle"
+autoplay = "Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_l3pft")
