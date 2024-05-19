@@ -19,7 +19,7 @@ func _process(delta):
 	if Input.is_key_pressed(KEY_D):
 		velocity.x=1;
 		
-	var movement=velocity.normalized()*300*delta;
+	var movement=velocity.normalized()*500*delta;
 	self.move_and_collide(movement);
 	if Input.is_key_pressed(KEY_R):
 		shoot()
