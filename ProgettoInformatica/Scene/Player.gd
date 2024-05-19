@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const bulletPath=preload("res://Scene/bullet.tscn")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print(self.position);
@@ -21,14 +21,22 @@ func _process(delta):
 		
 	var movement=velocity.normalized()*500*delta;
 	self.move_and_collide(movement);
-	if Input.is_key_pressed(KEY_R):
-		shoot()
+	self.update_animations(velocity)
 	
-	
-	
-
-
-func shoot():
-	var bullet=bulletPath.instance()
-	get_parent().add_child(bullet)
-	bullet.position=$Position2D.global_position
+func update_animations(velocity):
+		if velocity.y==1:
+			$Player.play("walk2")
+		elif velocity.y==-1:
+			$Player.play("walk1")
+		elif velocity.x==-1:
+			$Player.play("walk3")
+			$Player.flip_h=false
+		elif velocity.x==1:
+			$Player.play("walk3")
+			$Player.flip_h=true
+			
+			
+			
+		if velocity==Vector2():
+			$Player.play("stand_down")
+		
