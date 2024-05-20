@@ -12,10 +12,6 @@ func _ready():
 			spawnPoints.append(i)
 
 
-
-
-
-
 func _on_timer_timeout():
 	var spawn = spawnPoints[randi()%spawnPoints.size()]
 	var enemy = enemies_scene.instantiate()

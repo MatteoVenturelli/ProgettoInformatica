@@ -5030,50 +5030,62 @@ layer_0/tile_data = PackedInt32Array(786462, 1638400, 1, 851998, 1638400, 2, 917
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/StaticBody2D"]
 position = Vector2(263.9, 343.6)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_hhjk6")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="TileMap/StaticBody2D"]
 position = Vector2(263.9, 343.6)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_hhjk6")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="TileMap/StaticBody2D"]
 position = Vector2(424, -0.400013)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_hhjk6")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="TileMap/StaticBody2D"]
 position = Vector2(424.2, 95.4)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_hhjk6")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="TileMap/StaticBody2D"]
 position = Vector2(424.2, 191.4)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_hhjk6")
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="TileMap/StaticBody2D"]
 position = Vector2(264.2, 423.8)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_hhjk6")
 
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="TileMap/StaticBody2D"]
 position = Vector2(399.8, 335.3)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_j8gxg")
 
 [node name="CollisionShape2D10" type="CollisionShape2D" parent="TileMap/StaticBody2D"]
 position = Vector2(640.2, 336)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_j8gxg")
 
 [node name="CollisionShape2D8" type="CollisionShape2D" parent="TileMap/StaticBody2D"]
 position = Vector2(640.2, 432)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_j8gxg")
 
 [node name="CollisionShape2D9" type="CollisionShape2D" parent="TileMap/StaticBody2D"]
 position = Vector2(399.6, 431.6)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_j8gxg")
 
 [node name="CollisionShape2D11" type="CollisionShape2D" parent="TileMap/StaticBody2D"]
 position = Vector2(483.8, 267.9)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_kirgo")
 
 [node name="CollisionShape2D12" type="CollisionShape2D" parent="TileMap/StaticBody2D"]
 position = Vector2(556.8, 269.2)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_kirgo")
 
 [node name="EnemySpawner" parent="." instance=ExtResource("4_vyj7u")]
