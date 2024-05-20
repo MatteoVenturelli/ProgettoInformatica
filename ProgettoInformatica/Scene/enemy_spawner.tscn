@@ -5,16 +5,11 @@
 [node name="EnemySpawner" type="Node2D"]
 script = ExtResource("1_oragc")
 
-[node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(360, -50)
-
 [node name="Marker2D2" type="Marker2D" parent="."]
-position = Vector2(405, -50)
-
-[node name="Marker2D3" type="Marker2D" parent="."]
-position = Vector2(450, -50)
+position = Vector2(-498, 356)
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
 autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

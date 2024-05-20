@@ -1,28 +1,54 @@
-[gd_scene load_steps=4 format=3 uid="uid://c7wfi0ggktfyt"]
+[gd_scene load_steps=7 format=3 uid="uid://c7wfi0ggktfyt"]
 
-[ext_resource type="Texture2D" uid="uid://ddfi0ficymkoo" path="res://Entità/Player/icon.svg" id="1_bbcin"]
+[ext_resource type="Texture2D" uid="uid://ddaxtrjc0m6a3" path="res://Entità/Enemies/z.stand_down.png" id="1_kiegy"]
+[ext_resource type="Script" path="res://Scene/enemies.gd" id="1_qin7j"]
+[ext_resource type="Texture2D" uid="uid://de7sd12h2xyeb" path="res://Entità/Enemies/z.stand_left.png" id="2_1cefo"]
+[ext_resource type="Texture2D" uid="uid://d23spxamjohn3" path="res://Entità/Enemies/z.stand_up.png" id="3_x7kid"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sya02"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_bbcin")
+"texture": ExtResource("1_kiegy")
 }],
 "loop": true,
-"name": &"Idle",
+"name": &"stand_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_1cefo")
+}],
+"loop": true,
+"name": &"stand_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_x7kid")
+}],
+"loop": true,
+"name": &"stand_up",
 "speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l3pft"]
-size = Vector2(128, 127)
+size = Vector2(84, 25)
 
 [node name="Enemies" type="CharacterBody2D"]
+script = ExtResource("1_qin7j")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_sya02")
-animation = &"Idle"
-autoplay = "Idle"
+animation = &"stand_down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.5)
+position = Vector2(0, 56.5)
 shape = SubResource("RectangleShape2D_l3pft")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
