@@ -1,0 +1,152 @@
+[gd_scene load_steps=19 format=3 uid="uid://c7wfi0ggktfyt"]
+
+[ext_resource type="Texture2D" uid="uid://ddaxtrjc0m6a3" path="res://Entità/Enemies/z.stand_down.png" id="1_kiegy"]
+[ext_resource type="Script" path="res://Scene/enemies.gd" id="1_qin7j"]
+[ext_resource type="Texture2D" uid="uid://de7sd12h2xyeb" path="res://Entità/Enemies/z.stand_left.png" id="2_1cefo"]
+[ext_resource type="Texture2D" uid="uid://d23spxamjohn3" path="res://Entità/Enemies/z.stand_up.png" id="3_x7kid"]
+[ext_resource type="Texture2D" uid="uid://c3kbxqyedcyes" path="res://Entità/Enemies/Walk.png" id="5_afw13"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qoyb6"]
+atlas = ExtResource("5_afw13")
+region = Rect2(0, 0, 32, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_at7cb"]
+atlas = ExtResource("5_afw13")
+region = Rect2(32, 0, 32, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7vt4s"]
+atlas = ExtResource("5_afw13")
+region = Rect2(64, 0, 32, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xaih5"]
+atlas = ExtResource("5_afw13")
+region = Rect2(96, 0, 32, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4kkhr"]
+atlas = ExtResource("5_afw13")
+region = Rect2(128, 0, 32, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gje0l"]
+atlas = ExtResource("5_afw13")
+region = Rect2(160, 0, 32, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t3iby"]
+atlas = ExtResource("5_afw13")
+region = Rect2(192, 0, 32, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1171w"]
+atlas = ExtResource("5_afw13")
+region = Rect2(224, 0, 32, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4jo63"]
+atlas = ExtResource("5_afw13")
+region = Rect2(256, 0, 32, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3kx3a"]
+atlas = ExtResource("5_afw13")
+region = Rect2(288, 0, 32, 30)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sya02"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_kiegy")
+}],
+"loop": true,
+"name": &"stand_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_1cefo")
+}],
+"loop": true,
+"name": &"stand_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_x7kid")
+}],
+"loop": true,
+"name": &"stand_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qoyb6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_at7cb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7vt4s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xaih5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4kkhr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gje0l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t3iby")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1171w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4jo63")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3kx3a")
+}],
+"loop": true,
+"name": &"walk_down",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l3pft"]
+size = Vector2(84, 144.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_748qn"]
+size = Vector2(83, 146)
+
+[node name="Enemies" type="CharacterBody2D"]
+texture_filter = 1
+position = Vector2(13, -7)
+collision_layer = 128
+collision_mask = 253
+script = ExtResource("1_qin7j")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(6, 6)
+sprite_frames = SubResource("SpriteFrames_sya02")
+animation = &"walk_down"
+frame = 2
+frame_progress = 0.406045
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-9, 17.25)
+shape = SubResource("RectangleShape2D_l3pft")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.25
+autostart = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-9.5, 18)
+shape = SubResource("RectangleShape2D_748qn")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+collision_mask = 32
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_shape_entered" from="Area2D" to="." method="_on_area_2d_body_shape_entered"]
+[connection signal="body_shape_exited" from="Area2D" to="." method="_on_area_2d_body_shape_exited"]
