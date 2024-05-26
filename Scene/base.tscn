@@ -5253,6 +5253,12 @@ limit_right = 3361
 limit_bottom = 2479
 metadata/_edit_group_ = true
 
+[node name="Timer" type="Timer" parent="Player1"]
+wait_time = 0.5
+
+[node name="Timer2" type="Timer" parent="Player1"]
+wait_time = 0.3
+
 [node name="BulletManager" type="Node2D" parent="."]
 script = ExtResource("30_6tidm")
 bullet_scene = ExtResource("31_wogbe")
@@ -5324,3 +5330,5 @@ position = Vector2(476, 350)
 zoom = Vector2(0.75, 0.75)
 
 [connection signal="shoot" from="Player1" to="BulletManager" method="_on_player_1_shoot"]
+[connection signal="timeout" from="Player1/Timer" to="Player1" method="_on_timer_timeout"]
+[connection signal="timeout" from="Player1/Timer2" to="Player1" method="_on_timer_2_timeout"]

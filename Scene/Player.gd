@@ -1,49 +1,66 @@
 extends CharacterBody2D
 
 signal shoot 
-var last_velocity
+var can_shoot:bool
+var shooting:bool
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Player.play("stand_down")
 	position.x=640
 	position.y=1051
-
+	can_shoot=true
+	shooting=false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var velocity=Vector2();
-	if Input.is_key_pressed(KEY_W):
+	if Input.is_key_pressed(KEY_W)&& !shooting:
 		velocity.y=-1;
-	if Input.is_key_pressed(KEY_S):
+	if Input.is_key_pressed(KEY_S)&& !shooting:
 		velocity.y=1;
-	if Input.is_key_pressed(KEY_A):
+	if Input.is_key_pressed(KEY_A)&& !shooting:
 		velocity.x=-1;
-	if Input.is_key_pressed(KEY_D):
+	if Input.is_key_pressed(KEY_D)&& !shooting:
 		velocity.x=1;
 	
-	if Input.is_key_pressed(KEY_LEFT):
-		shoot.emit(position, last_velocity)
+	if Input.is_key_pressed(KEY_LEFT)&& can_shoot==true:
 		velocity.x=0
 		velocity.y=0
 		$Player.play("shoot_left")
 		$Player.flip_h=false
-	elif Input.is_key_pressed(KEY_RIGHT):
-		shoot.emit(position, last_velocity)
+		shoot.emit(position)
+		can_shoot=false
+		shooting=true 
+		$Timer.start()
+		$Timer2.start()
+	elif Input.is_key_pressed(KEY_RIGHT)&& can_shoot==true:
 		velocity.x=0
 		velocity.y=0
 		$Player.play("shoot_left")
 		$Player.flip_h=true	
-	elif Input.is_key_pressed(KEY_UP):
-		shoot.emit(position, last_velocity)
+		shoot.emit(position)
+		can_shoot=false
+		shooting=true 
+		$Timer.start()
+		$Timer2.start()
+	elif Input.is_key_pressed(KEY_UP)&& can_shoot==true:
 		velocity.x=0
 		velocity.y=0
 		$Player.play("shoot_up")
-	elif Input.is_key_pressed(KEY_DOWN):
-		shoot.emit(position, last_velocity)
+		shoot.emit(position)
+		can_shoot=false
+		shooting=true 
+		$Timer.start()
+		$Timer2.start()
+	elif Input.is_key_pressed(KEY_DOWN)&& can_shoot==true:
 		velocity.x=0
 		velocity.y=0
 		$Player.play("shoot_down")
-		
+		shoot.emit(position)
+		can_shoot=false
+		shooting=true 
+		$Timer.start()
+		$Timer2.start()
 		
 		
 	
@@ -51,8 +68,9 @@ func _process(delta):
 	position.y=clamp(position.y, -242, 2479)
 	var movement=velocity.normalized()*500*delta;
 	self.move_and_collide(movement);
-	self.update_animations(velocity)
-	last_velocity= velocity
+	if !shooting:
+		self.update_animations(velocity)
+	
 func update_animations(velocity):
 		if velocity.y==1:
 			$Player.play("walk2")
@@ -67,11 +85,19 @@ func update_animations(velocity):
 			
 			
 			
-		if velocity==Vector2() && $Player.animation=="walk2":
+		if velocity==Vector2() && $Player.animation=="walk2"||$Player.animation=="shoot_down" :
 			$Player.play("stand_down")
-		if velocity==Vector2() && $Player.animation=="walk1":
+		if velocity==Vector2() && $Player.animation=="walk1"||$Player.animation=="shoot_up":
 			$Player.play("stand_up")
-		if velocity==Vector2() && $Player.animation=="walk3":
+		if velocity==Vector2() && $Player.animation=="walk3"||$Player.animation=="shoot_left":
 			$Player.play("stand_left")
 		
 
+
+
+func _on_timer_timeout():
+	can_shoot=true
+
+
+func _on_timer_2_timeout():
+	shooting=false
