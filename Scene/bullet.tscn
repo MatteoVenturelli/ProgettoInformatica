@@ -1,19 +1,124 @@
-[gd_scene load_steps=3 format=3 uid="uid://dxp56gudbkprn"]
+[gd_scene load_steps=17 format=3 uid="uid://buorwxcbbrqgl"]
 
-[ext_resource type="Texture2D" uid="uid://ddfi0ficymkoo" path="res://icon.svg" id="1_ydunn"]
+[ext_resource type="Script" path="res://Scene/bullet.gd" id="1_gonnx"]
+[ext_resource type="Texture2D" uid="uid://crmyyhw1a6ihs" path="res://Entità/Player/Bullet.png" id="1_otxap"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cgo1x"]
-size = Vector2(38, 38)
+[sub_resource type="AtlasTexture" id="AtlasTexture_fxpok"]
+atlas = ExtResource("1_otxap")
+region = Rect2(0, 32, 32, 32)
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1nix2"]
+atlas = ExtResource("1_otxap")
+region = Rect2(32, 32, 32, 32)
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[sub_resource type="AtlasTexture" id="AtlasTexture_mhdom"]
+atlas = ExtResource("1_otxap")
+region = Rect2(64, 32, 32, 32)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(342, 180)
-shape = SubResource("RectangleShape2D_cgo1x")
+[sub_resource type="AtlasTexture" id="AtlasTexture_t5hrr"]
+atlas = ExtResource("1_otxap")
+region = Rect2(96, 32, 32, 32)
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
-position = Vector2(342, 180)
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("1_ydunn")
+[sub_resource type="AtlasTexture" id="AtlasTexture_cw3hk"]
+atlas = ExtResource("1_otxap")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_assot"]
+atlas = ExtResource("1_otxap")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0xkqu"]
+atlas = ExtResource("1_otxap")
+region = Rect2(64, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u0lwv"]
+atlas = ExtResource("1_otxap")
+region = Rect2(96, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_63d1i"]
+atlas = ExtResource("1_otxap")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uyc2p"]
+atlas = ExtResource("1_otxap")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r5e8e"]
+atlas = ExtResource("1_otxap")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m6lmy"]
+atlas = ExtResource("1_otxap")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k6iq7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fxpok")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1nix2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mhdom")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t5hrr")
+}],
+"loop": true,
+"name": &"bullet_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cw3hk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_assot")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0xkqu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u0lwv")
+}],
+"loop": true,
+"name": &"bullet_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_63d1i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uyc2p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r5e8e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m6lmy")
+}],
+"loop": true,
+"name": &"bullet_up",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e23xc"]
+size = Vector2(4, 3)
+
+[node name="bullet" type="Area2D"]
+collision_layer = 64
+collision_mask = 131
+script = ExtResource("1_gonnx")
+
+[node name="AnimatedBullet2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_k6iq7")
+animation = &"bullet_left"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0.5)
+shape = SubResource("RectangleShape2D_e23xc")
