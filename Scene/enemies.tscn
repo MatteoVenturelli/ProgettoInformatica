@@ -622,29 +622,41 @@ script = ExtResource("1_qin7j")
 texture_filter = 1
 scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_sya02")
-animation = &"attack_left"
+animation = &"death_up"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-9, 17.25)
+z_index = 3
+position = Vector2(-2, 16)
 shape = SubResource("RectangleShape2D_l3pft")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 1.25
+wait_time = 0.75
 autostart = true
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 128
-collision_mask = 2
+collision_mask = 66
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-9.5, 18)
+position = Vector2(-2, 14)
 shape = SubResource("RectangleShape2D_748qn")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 collision_mask = 32
 
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 0.75
+autostart = true
+
+[node name="Timer3" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="body_shape_entered" from="Area2D" to="." method="_on_area_2d_body_shape_entered"]
 [connection signal="body_shape_exited" from="Area2D" to="." method="_on_area_2d_body_shape_exited"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
+[connection signal="timeout" from="Timer3" to="." method="_on_timer_3_timeout"]

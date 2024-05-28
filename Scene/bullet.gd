@@ -1,5 +1,6 @@
 extends Area2D
 @onready var player = get_node("/root/Node/Player1/Player")
+@onready var enemy = get_node("/root/Enemies")
 var direction:Vector2
 var speed:int=1100
 # Called when the node enters the scene tree for the first time.
@@ -24,12 +25,10 @@ func _process(delta):
 	position+= speed*direction*delta
 
 
-
-
-
 func _on_timer_timeout():
 	queue_free()
 
 
 func _on_body_entered(body):
 	queue_free()
+

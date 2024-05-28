@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://buorwxcbbrqgl"]
+[gd_scene load_steps=19 format=3 uid="uid://buorwxcbbrqgl"]
 
 [ext_resource type="Script" path="res://Scene/bullet.gd" id="1_gonnx"]
 [ext_resource type="Texture2D" uid="uid://crmyyhw1a6ihs" path="res://Entità/Player/Bullet.png" id="1_otxap"]
+[ext_resource type="Script" path="res://Scene/CharacterBody2D.gd" id="3_lxubi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fxpok"]
 atlas = ExtResource("1_otxap")
@@ -106,12 +107,16 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e23xc"]
+size = Vector2(25, 19)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l28tr"]
 size = Vector2(20, 15)
 
 [node name="bullet" type="Area2D"]
 collision_layer = 64
-collision_mask = 130
+collision_mask = 129
 script = ExtResource("1_gonnx")
+metadata/_edit_group_ = true
 
 [node name="AnimatedBullet2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -120,12 +125,24 @@ sprite_frames = SubResource("SpriteFrames_k6iq7")
 animation = &"bullet_left"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-5, 2.5)
+z_index = 2
+position = Vector2(-4.5, 2.5)
 shape = SubResource("RectangleShape2D_e23xc")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
 autostart = true
 
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+collision_layer = 64
+collision_mask = 129
+script = ExtResource("3_lxubi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(-5, 2.5)
+shape = SubResource("RectangleShape2D_l28tr")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_shape_entered" from="." to="." method="_on_area_shape_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

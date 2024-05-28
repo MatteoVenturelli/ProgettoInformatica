@@ -3592,7 +3592,7 @@ radius = 14.0
 height = 28.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ax3vw"]
-size = Vector2(428.688, 1060.03)
+size = Vector2(837.344, 1060.03)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ntdga"]
 size = Vector2(371, 168)
@@ -3613,7 +3613,7 @@ size = Vector2(75, 2.5)
 size = Vector2(403, 21)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lddi8"]
-size = Vector2(43, 1261)
+size = Vector2(43, 1687)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8f8cc"]
 size = Vector2(161, 370)
@@ -4986,6 +4986,7 @@ size = Vector2(15.05, 12.6)
 [node name="Node" type="Node"]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 195
 
 [node name="TileMap" type="TileMap" parent="StaticBody2D"]
 texture_filter = 1
@@ -5118,11 +5119,11 @@ position = Vector2(600, 2432)
 shape = SubResource("CapsuleShape2D_v1hca")
 
 [node name="CollisionShape2D35" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-287, 1080)
+position = Vector2(-491.328, 1080)
 shape = SubResource("RectangleShape2D_ax3vw")
 
 [node name="CollisionShape2D36" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(259.656, 1951.98)
+position = Vector2(46, 1952)
 shape = SubResource("RectangleShape2D_ax3vw")
 
 [node name="CollisionShape2D37" type="CollisionShape2D" parent="StaticBody2D"]
@@ -5158,7 +5159,7 @@ position = Vector2(3003, 1398)
 shape = SubResource("RectangleShape2D_cmmoj")
 
 [node name="CollisionShape2D44" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1977.5, 384.5)
+position = Vector2(1977.5, 171.5)
 shape = SubResource("RectangleShape2D_lddi8")
 
 [node name="CollisionShape2D46" type="CollisionShape2D" parent="StaticBody2D"]
@@ -5241,7 +5242,7 @@ metadata/_edit_group_ = true
 texture_filter = 1
 scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_8t33t")
-animation = &"shoot_up"
+animation = &"shoot_left"
 metadata/_edit_group_ = true
 
 [node name="Camera2D" type="Camera2D" parent="Player1/Player"]
