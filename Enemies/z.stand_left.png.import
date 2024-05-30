@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://de7sd12h2xyeb"
-path="res://.godot/imported/z.stand_left.png-4d5219159f31afe85fd4a7f09efc16a6.ctex"
+path="res://.godot/imported/z.stand_left.png-0c9e806cc416b303443cff090196596e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Entità/Enemies/z.stand_left.png"
-dest_files=["res://.godot/imported/z.stand_left.png-4d5219159f31afe85fd4a7f09efc16a6.ctex"]
+source_file="res://Enemies/z.stand_left.png"
+dest_files=["res://.godot/imported/z.stand_left.png-0c9e806cc416b303443cff090196596e.ctex"]
 
 [params]
 
