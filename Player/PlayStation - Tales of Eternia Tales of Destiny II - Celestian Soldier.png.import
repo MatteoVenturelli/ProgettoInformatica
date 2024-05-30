@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ceadop464moj1"
-path="res://.godot/imported/PlayStation - Tales of Eternia Tales of Destiny II - Celestian Soldier.png-2fcda21b7f6d64808312de7380e1a8be.ctex"
+path="res://.godot/imported/PlayStation - Tales of Eternia Tales of Destiny II - Celestian Soldier.png-7d62ca4b4938caa8cfbd869fcd4d8d72.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Entità/Player/PlayStation - Tales of Eternia Tales of Destiny II - Celestian Soldier.png"
-dest_files=["res://.godot/imported/PlayStation - Tales of Eternia Tales of Destiny II - Celestian Soldier.png-2fcda21b7f6d64808312de7380e1a8be.ctex"]
+source_file="res://Player/PlayStation - Tales of Eternia Tales of Destiny II - Celestian Soldier.png"
+dest_files=["res://.godot/imported/PlayStation - Tales of Eternia Tales of Destiny II - Celestian Soldier.png-7d62ca4b4938caa8cfbd869fcd4d8d72.ctex"]
 
 [params]
 

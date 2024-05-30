@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bsqa6lpqwd2ha"
-path="res://.godot/imported/Mobile - Metal Slug Attack - Bazooka Soldier Wrath.png-4a2d449fe3b68d2ceb17f1186d5fff07.ctex"
+path="res://.godot/imported/Mobile - Metal Slug Attack - Bazooka Soldier Wrath.png-cd70b428fa0937fa0cd32dc2cf09443d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Entità/Player/Mobile - Metal Slug Attack - Bazooka Soldier Wrath.png"
-dest_files=["res://.godot/imported/Mobile - Metal Slug Attack - Bazooka Soldier Wrath.png-4a2d449fe3b68d2ceb17f1186d5fff07.ctex"]
+source_file="res://Player/Mobile - Metal Slug Attack - Bazooka Soldier Wrath.png"
+dest_files=["res://.godot/imported/Mobile - Metal Slug Attack - Bazooka Soldier Wrath.png-cd70b428fa0937fa0cd32dc2cf09443d.ctex"]
 
 [params]
 

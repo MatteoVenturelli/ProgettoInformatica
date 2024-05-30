@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d3gw6a7uccjh5"
-path="res://.godot/imported/standdown.png-1f49c652ce8a4fbb8904fb993bd5dad3.ctex"
+path="res://.godot/imported/standdown.png-8150e21fb6ab97ed91c1a3e5546ecde4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Entità/Player/standdown.png"
-dest_files=["res://.godot/imported/standdown.png-1f49c652ce8a4fbb8904fb993bd5dad3.ctex"]
+source_file="res://Player/standdown.png"
+dest_files=["res://.godot/imported/standdown.png-8150e21fb6ab97ed91c1a3e5546ecde4.ctex"]
 
 [params]
 
