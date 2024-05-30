@@ -71,19 +71,27 @@ func _on_area_2d_body_entered(body):
 	if body==player:
 		if abs(direzione.y) > abs(direzione.x) && direzione.y>0:
 			$AnimatedSprite2D.play("attack_down")
+			direzione.x=0
+			direzione.y=0
 		
 		elif abs(direzione.y) > abs(direzione.x) && direzione.y<0:
 			$AnimatedSprite2D.play("attack_up")
+			direzione.x=0
+			direzione.y=0
 		
 		elif abs(direzione.y) < abs(direzione.x) && direzione.x>0:
 			$AnimatedSprite2D.play("attack_left")
 			$AnimatedSprite2D.flip_h=true
+			direzione.x=0
+			direzione.y=0
 		
 		elif abs(direzione.y) < abs(direzione.x) && direzione.x<0:
 			$AnimatedSprite2D.play("attack_left")
 			$AnimatedSprite2D.flip_h=false
-	direzione.x=0
-	direzione.y=0
+			direzione.x=0
+			direzione.y=0
+			
+	
 	
 		
 
@@ -93,18 +101,26 @@ func _on_area_2d_body_exited(body):
 
 func _on_area_2d_area_entered(area):
 	alive=false
-	if abs(direzione.y) > abs(direzione.x) && direzione.y>0:
-		$AnimatedSprite2D.play("death_down")	
-	elif abs(direzione.y) > abs(direzione.x) && direzione.y<0:
-		$AnimatedSprite2D.play("death_up")	
-	elif abs(direzione.y) < abs(direzione.x) && direzione.x>0:
+	if abs(direzione.y) >= abs(direzione.x) && direzione.y>=0:
+		$AnimatedSprite2D.play("death_down")
+		direzione.x=0
+		direzione.y=0
+	elif abs(direzione.y) >= abs(direzione.x) && direzione.y<=0:
+		$AnimatedSprite2D.play("death_up")
+		direzione.x=0
+		direzione.y=0
+	elif abs(direzione.y) <= abs(direzione.x) && direzione.x>=0:
 		$AnimatedSprite2D.play("death_left")
 		$AnimatedSprite2D.flip_h=true
-	elif abs(direzione.y) < abs(direzione.x) && direzione.x<0:
+		direzione.x=0
+		direzione.y=0
+	elif abs(direzione.y) <= abs(direzione.x) && direzione.x<=0:
 		$AnimatedSprite2D.play("death_left")
 		$AnimatedSprite2D.flip_h=false
-	direzione.x=0
-	direzione.y=0
+		direzione.x=0
+		direzione.y=0
+	
+	
 	
 
 

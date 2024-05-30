@@ -3,6 +3,9 @@ extends CharacterBody2D
 signal shoot 
 var can_shoot:bool
 var shooting:bool
+var lives : int 
+var waves : int
+var enemies : int
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Player.play("stand_down")
@@ -10,8 +13,17 @@ func _ready():
 	position.y=1051
 	can_shoot=true
 	shooting=false
-
+	enemies = 10
+	lives = 3
+	waves = 1
+	$Player/Camera2D/Hud/LivesLabel.text= "X " + str(lives)
+	$Player/Camera2D/Hud/WavesLabel.text= "WAVE: " + str(waves)
+	$Player/Camera2D/Hud/EnemiesLabel.text= "X " + str(enemies)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+func enemy_hit_player():
+	#if zombie gianno hitta ventu
+		lives -= 1
+		$Player/Camera2D/Hud/LivesLabel.text= "X " + str(lives)
 func _process(delta):
 	var velocity=Vector2();
 	if Input.is_key_pressed(KEY_W)&& !shooting:
@@ -101,3 +113,4 @@ func _on_timer_timeout():
 
 func _on_timer_2_timeout():
 	shooting=false
+

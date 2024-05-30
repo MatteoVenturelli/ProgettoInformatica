@@ -119,18 +119,18 @@ size = Vector2(84, 144.5)
 texture_filter = 1
 scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_hqpld")
-animation = &"walk_down"
+animation = &"stand_down"
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Enemies"]
 position = Vector2(-9, 17.25)
 shape = SubResource("RectangleShape2D_y0cqa")
 
-[node name="Timer3" type="Timer" parent="Enemies"]
+[node name="Timer4" type="Timer" parent="Enemies"]
 autostart = true
 
 [node name="NavigationAgent2D2" type="NavigationAgent2D" parent="Enemies"]
 debug_enabled = true
 
-[node name="Timer4" type="Timer" parent="Enemies"]
+[node name="Timer5" type="Timer" parent="Enemies"]
 wait_time = 0.1
 autostart = true
