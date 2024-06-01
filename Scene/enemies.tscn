@@ -616,6 +616,8 @@ texture_filter = 1
 position = Vector2(13, -7)
 collision_layer = 128
 collision_mask = 253
+motion_mode = 1
+wall_min_slide_angle = 0.0
 script = ExtResource("1_qin7j")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -652,6 +654,15 @@ autostart = true
 wait_time = 2.0
 autostart = true
 
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Node2D"]
+avoidance_layers = 32768
+
+[node name="Timer4" type="Timer" parent="Node2D"]
+wait_time = 0.1
+autostart = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
@@ -660,3 +671,4 @@ autostart = true
 [connection signal="body_shape_exited" from="Area2D" to="." method="_on_area_2d_body_shape_exited"]
 [connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
 [connection signal="timeout" from="Timer3" to="." method="_on_timer_3_timeout"]
+[connection signal="timeout" from="Node2D/Timer4" to="." method="_on_timer_4_timeout"]

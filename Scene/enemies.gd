@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @onready var player = get_node("/root/Node/Player1")
 @onready var bullet = get_node("/root/bullet")
+@onready var navigation_agent: NavigationAgent2D = $Node2D/NavigationAgent2D
 var alive: bool
 var entrato : bool
 var speed : int = 220
@@ -33,7 +34,7 @@ func _ready():
 func _physics_process(delta):
 	
 	if entrato && !collision && alive && !bloccato:
-		direzione=player.position-position
+		direzione=navigation_agent.get_next_path_position()-global_position
 	if entrato && !collision && alive:
 		if abs(direzione.y) > abs(direzione.x) && direzione.y>0 :
 			$AnimatedSprite2D.play("walk_down")
@@ -71,27 +72,19 @@ func _on_area_2d_body_entered(body):
 	if body==player:
 		if abs(direzione.y) > abs(direzione.x) && direzione.y>0:
 			$AnimatedSprite2D.play("attack_down")
-			direzione.x=0
-			direzione.y=0
 		
 		elif abs(direzione.y) > abs(direzione.x) && direzione.y<0:
 			$AnimatedSprite2D.play("attack_up")
-			direzione.x=0
-			direzione.y=0
 		
 		elif abs(direzione.y) < abs(direzione.x) && direzione.x>0:
 			$AnimatedSprite2D.play("attack_left")
 			$AnimatedSprite2D.flip_h=true
-			direzione.x=0
-			direzione.y=0
 		
 		elif abs(direzione.y) < abs(direzione.x) && direzione.x<0:
 			$AnimatedSprite2D.play("attack_left")
 			$AnimatedSprite2D.flip_h=false
-			direzione.x=0
-			direzione.y=0
-			
-	
+	direzione.x=0
+	direzione.y=0
 	
 		
 
@@ -102,45 +95,16 @@ func _on_area_2d_body_exited(body):
 func _on_area_2d_area_entered(area):
 	alive=false
 	if abs(direzione.y) >= abs(direzione.x) && direzione.y>=0:
-		$AnimatedSprite2D.play("death_down")
-		direzione.x=0
-		direzione.y=0
+		$AnimatedSprite2D.play("death_down")	
 	elif abs(direzione.y) >= abs(direzione.x) && direzione.y<=0:
-		$AnimatedSprite2D.play("death_up")
-		direzione.x=0
-		direzione.y=0
+		$AnimatedSprite2D.play("death_up")	
 	elif abs(direzione.y) <= abs(direzione.x) && direzione.x>=0:
 		$AnimatedSprite2D.play("death_left")
 		$AnimatedSprite2D.flip_h=true
-		direzione.x=0
-		direzione.y=0
 	elif abs(direzione.y) <= abs(direzione.x) && direzione.x<=0:
 		$AnimatedSprite2D.play("death_left")
 		$AnimatedSprite2D.flip_h=false
-		direzione.x=0
-		direzione.y=0
-	
-	
-	
-
-
-func _on_timer_2_timeout():
-	if position<=vecchiaPosizione+tolleranza2 && position>=vecchiaPosizione-tolleranza2 && !collision:
-		bloccato=true
-		if abs(direzione.y) > abs(direzione.x) && direzione.y>0:
-			direzione.y-=30
-			direzione.x=4000
-		if abs(direzione.y) > abs(direzione.x) && direzione.y<0:
-			direzione.y+=30
-			direzione.x=4000
-		if abs(direzione.y) < abs(direzione.x) && direzione.x>0:
-			direzione.x-=30
-			direzione.y=-4000
-		if abs(direzione.y) < abs(direzione.x) && direzione.x<0:
-			direzione.x+=30
-			direzione.y=-4000
-	vecchiaPosizione=position
-
-
-func _on_timer_3_timeout():
-	bloccato=false
+	direzione.x=0
+	direzione.y=0
+func _on_timer_4_timeout():
+	navigation_agent.target_position=player.global_position
